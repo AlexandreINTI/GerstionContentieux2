@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Utilisateur implements Serializable{
@@ -41,6 +42,9 @@ public class Utilisateur implements Serializable{
 			joinColumns= {@JoinColumn(name="idUtilisateur",referencedColumnName="idUtilisateur")},
 				inverseJoinColumns= {@JoinColumn(name="idRole",table="role",referencedColumnName="idRole")})
 	private Set<Role> listrole=new HashSet<Role>();
+	
+	@OneToOne
+	private UtilisateurHisto utilisateurHisto;
 
 	public Utilisateur() {
 		super();

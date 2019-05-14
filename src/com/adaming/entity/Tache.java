@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Tache implements Serializable{
@@ -32,6 +33,8 @@ public class Tache implements Serializable{
 	private Affaire affaire;
 	@ManyToOne
 	private Tribunal tribunal;
+	@OneToOne
+	private TacheHisto tacheHisto;
 	
 	public Tache() {
 		super();
