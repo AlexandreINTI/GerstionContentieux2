@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+<beans:beans xmlns="http://www.springframework.org/schema/mvc" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -28,6 +28,16 @@
 		</beans:props>
 	</beans:property>
 	<beans:property name="packagesToScan" value="com.adaming.entity"></beans:property>
+</beans:bean>
+
+<mvc:annotation-driven></mvc:annotation-driven>
+
+<mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></beans:property>
+<beans:property name="prefix" value="/WEB-INF/jsp/"></beans:property>
+<beans:property name="suffix" value=".jsp"></beans:property>
 </beans:bean>
 
 <!-- Scan des annotations -->
