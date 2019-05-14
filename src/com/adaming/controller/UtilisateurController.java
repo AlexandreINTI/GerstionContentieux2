@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.entity.Utilisateur;
+import com.adaming.service.interfaces.IUtilisateurHistoService;
 import com.adaming.service.interfaces.IUtilisateurService;
 
 @Controller
@@ -17,6 +18,9 @@ public class UtilisateurController {
 	
 	@Autowired
 	IUtilisateurService utilisateurService;
+	
+	@Autowired
+	IUtilisateurHistoService utilhistoserv;
 	
 	@RequestMapping(value="users", method=RequestMethod.GET)
 	public List<Utilisateur> findAll(){
@@ -27,6 +31,7 @@ public class UtilisateurController {
 	public void delete(@PathVariable("id") Long id) {
 		Utilisateur u1 = new Utilisateur();
 		u1=utilisateurService.getById(Utilisateur.class, id);
+		utilhistoserv.create(u1);
 		utilisateurService.delete(u1);
 	}
 	

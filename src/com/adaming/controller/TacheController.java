@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.entity.Tache;
+import com.adaming.service.interfaces.ITacheHistoService;
 import com.adaming.service.interfaces.ITacheService;
 
 @Controller
@@ -17,6 +18,9 @@ public class TacheController {
 	
 	@Autowired
 	ITacheService tacheserv;
+	
+	@Autowired
+	ITacheHistoService tachehistserv;
 	
 	@RequestMapping(value="taches",method=RequestMethod.GET)
 	public List<Tache> findAll(){
@@ -43,6 +47,7 @@ public class TacheController {
 	public void delete(@PathVariable("id")Long id) {
 		Tache t1=new Tache();
 		t1=tacheserv.getById(Tache.class, id);
+		tachehistserv.create(t1);
 		tacheserv.delete(t1);
 	}
 	
