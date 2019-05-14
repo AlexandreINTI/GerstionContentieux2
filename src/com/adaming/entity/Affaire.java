@@ -19,9 +19,9 @@ public class Affaire implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idAffaire;
-	private String email;
-	private String nom;
-	private String prenom;
+	private String reference;
+	private String titre;
+	private String description;
 	private int status;
 	
 	@OneToMany(mappedBy="affaire")
@@ -35,20 +35,20 @@ public class Affaire implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Affaire(Long idAffaire, String email, String nom, String prenom,int status) {
+	public Affaire(Long idAffaire, String reference, String titre, String description,int status) {
 		super();
 		this.idAffaire = idAffaire;
-		this.email = email;
-		this.nom = nom;
-		this.prenom = prenom;
+		this.reference = reference;
+		this.titre = titre;
+		this.description = description;
 		this.status=status;
 	}
 
-	public Affaire(String email, String nom, String prenom,int status) {
+	public Affaire(String reference, String titre, String description,int status) {
 		super();
-		this.email = email;
-		this.nom = nom;
-		this.prenom = prenom;
+		this.reference = reference;
+		this.titre = titre;
+		this.description = description;
 		this.status=status;
 	}
 
@@ -60,28 +60,28 @@ public class Affaire implements Serializable{
 		this.idAffaire = idAffaire;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getreference() {
+		return reference;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setreference(String reference) {
+		this.reference = reference;
 	}
 
-	public String getNom() {
-		return nom;
+	public String gettitre() {
+		return titre;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void settitre(String titre) {
+		this.titre = titre;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public String getdescription() {
+		return description;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setdescription(String description) {
+		this.description = description;
 	}
 
 	public int getStatus() {
@@ -111,7 +111,7 @@ public class Affaire implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Affaire [idAffaire=" + idAffaire + ", email=" + email + ", nom=" + nom + ", prenom=" + prenom + "]";
+		return "Affaire [idAffaire=" + idAffaire + ", reference=" + reference + ", titre=" + titre + ", description=" + description + "]";
 	}
 	
 	
