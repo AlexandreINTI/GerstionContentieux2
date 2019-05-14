@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,10 +25,10 @@ public class Affaire implements Serializable{
 	private String description;
 	private int status;
 	
-	@OneToMany(mappedBy="affaire")
+	@OneToMany(mappedBy="affaire",fetch=FetchType.EAGER)
 	private Set<Document> listDocument;
 	
-	@OneToMany(mappedBy="affaire")
+	@OneToMany(mappedBy="affaire",fetch=FetchType.EAGER)
 	private Set<Tache> listTache;
 
 	public Affaire() {

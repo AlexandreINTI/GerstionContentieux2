@@ -37,7 +37,7 @@ public class Utilisateur implements Serializable{
 			joinColumns= {@JoinColumn(name="idUtilisateur",referencedColumnName="idUtilisateur")},
 				inverseJoinColumns= {@JoinColumn(name="IdTache",table="tache",referencedColumnName="idTache")})
 	private Set<Tache> listtache=new HashSet<Tache>();
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="Utilisateur_Role",
 			joinColumns= {@JoinColumn(name="idUtilisateur",referencedColumnName="idUtilisateur")},
 				inverseJoinColumns= {@JoinColumn(name="idRole",table="role",referencedColumnName="idRole")})

@@ -3,17 +3,18 @@ package com.adaming.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entity.Utilisateur;
+import com.adaming.entity.UtilisateurHisto;
 import com.adaming.service.interfaces.IUtilisateurHistoService;
 import com.adaming.service.interfaces.IUtilisateurService;
 
-@Controller
+@RestController
 public class UtilisateurController {
 	
 	@Autowired
@@ -31,7 +32,14 @@ public class UtilisateurController {
 	public void delete(@PathVariable("id") Long id) {
 		Utilisateur u1 = new Utilisateur();
 		u1=utilisateurService.getById(Utilisateur.class, id);
-		utilhistoserv.create(u1);
+		UtilisateurHisto u2 = new UtilisateurHisto();
+		u2.setEmail(u1.getEmail());
+		u2.setIdUtilisateur(u1.getIdUtilisateur());
+		u2.setNom(u1.getNom());
+		u2.setPassword(u1.getPassword());
+		u2.setPrenom(u1.getPrenom());
+		u2.setUsername(u1.getUsername());
+		utilhistoserv.create(u2);
 		utilisateurService.delete(u1);
 	}
 	

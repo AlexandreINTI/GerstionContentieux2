@@ -3,17 +3,18 @@ package com.adaming.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entity.Tache;
+import com.adaming.entity.TacheHisto;
 import com.adaming.service.interfaces.ITacheHistoService;
 import com.adaming.service.interfaces.ITacheService;
 
-@Controller
+@RestController
 public class TacheController {
 	
 	@Autowired
@@ -47,7 +48,13 @@ public class TacheController {
 	public void delete(@PathVariable("id")Long id) {
 		Tache t1=new Tache();
 		t1=tacheserv.getById(Tache.class, id);
-		tachehistserv.create(t1);
+		TacheHisto t2 = new TacheHisto();
+		t2.setDateCreation(t1.getDateCreation());
+		t2.setDescription(t1.getDescription());
+		t2.setIdTache(t1.getIdTache());
+		t2.setStatusAudience(t1.isStatusAudience());
+		t2.setTitre(t1.getTitre());
+		tachehistserv.create(t2);
 		tacheserv.delete(t1);
 	}
 	

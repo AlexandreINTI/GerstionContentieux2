@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ public class Tribunal implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTribunal;
@@ -24,7 +26,7 @@ public class Tribunal implements Serializable {
 	private String tel;
 	private String region;
 
-	@OneToMany(mappedBy = "tribunal")
+	@OneToMany(mappedBy = "tribunal",fetch=FetchType.EAGER)
 	private Set<Tache> ListTache;
 
 	public Tribunal(Long idTribunal, String adresse, String fax, String tel, String region) {

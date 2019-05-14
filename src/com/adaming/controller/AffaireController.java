@@ -3,17 +3,18 @@ package com.adaming.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entity.Affaire;
+import com.adaming.entity.AffaireHisto;
 import com.adaming.service.interfaces.IAffaireHistoService;
 import com.adaming.service.interfaces.IAffaireService;
 
-@Controller
+@RestController
 public class AffaireController {
 	
 	@Autowired
@@ -36,7 +37,13 @@ public class AffaireController {
 	public void delete(@PathVariable("id")Long id) {
 		Affaire a1=new Affaire();
 		a1=affserv.getById(Affaire.class, id);
-		affhistserv.create(a1);
+		AffaireHisto a2 = new AffaireHisto();
+		a2.setDescription(a1.getdescription());
+		a2.setIdAffaire(a1.getIdAffaire());
+		a2.setReference(a1.getreference());
+		a2.setStatus(a1.getStatus());
+		a2.setTitre(a1.gettitre());
+		affhistserv.create(a2);
 		affserv.delete(a1);
 	}
 	

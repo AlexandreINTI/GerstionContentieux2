@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -27,7 +28,7 @@ public class Tache implements Serializable{
 	private String titre;
 	private String description;
 	private boolean statusAudience;
-	@OneToMany(mappedBy="tache")
+	@OneToMany(mappedBy="tache",fetch=FetchType.EAGER)
 	private List<Phase> listphase=new ArrayList<Phase>();
 	@ManyToOne
 	private Affaire affaire;

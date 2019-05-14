@@ -23,7 +23,7 @@ public class Document implements Serializable {
 	private String nom;
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne 
 	private Affaire affaire;
 
 	public Document(Long idDocument, Date dateCreation, String nom, String description) {
