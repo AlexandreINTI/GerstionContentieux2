@@ -56,7 +56,7 @@ public class UtilisateurController {
 	}
 	
 	@RequestMapping(value="users/{id}", method=RequestMethod.PUT)
-	public Utilisateur update(@PathVariable("id") Long id, Utilisateur utilisateur) {
+	public Utilisateur update(@PathVariable("id") Long id, @RequestBody Utilisateur utilisateur) {
 		Utilisateur u1 = new Utilisateur();
 		u1=utilisateurService.getById(Utilisateur.class, id);
 		u1.setEmail(utilisateur.getEmail());

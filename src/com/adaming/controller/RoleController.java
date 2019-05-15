@@ -44,7 +44,7 @@ public class RoleController {
 	}
 	
 	@RequestMapping(value="roles/{id}", method=RequestMethod.PUT)
-	public Role update(@PathVariable("id") Long id, Role role) {
+	public Role update(@PathVariable("id") Long id, @RequestBody Role role) {
 		Role r1 = new Role();
 		r1=roleService.getById(Role.class, id);
 		r1.setLibelle(role.getLibelle());

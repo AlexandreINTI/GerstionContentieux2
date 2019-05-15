@@ -39,7 +39,7 @@ public class PhaseController {
 	}
 	
 	@RequestMapping(value="phases/{id}", method=RequestMethod.PUT)
-	public Phase update(@PathVariable("id") Long id, Phase phase) {
+	public Phase update(@PathVariable("id") Long id, @RequestBody Phase phase) {
 		Phase p1 = new Phase();
 		p1=phaseService.getById(Phase.class, id);
 		p1.setDateDebut(phase.getDateDebut());

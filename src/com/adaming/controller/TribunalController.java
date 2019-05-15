@@ -41,7 +41,7 @@ public class TribunalController {
 	}
 	
 	@RequestMapping(value="tribunals/{id}", method=RequestMethod.PUT)
-	public Tribunal update(@PathVariable("id") Long id, Tribunal tribunal) {
+	public Tribunal update(@PathVariable("id") Long id, @RequestBody Tribunal tribunal) {
 		Tribunal t1= new Tribunal();
 		t1=tribunalService.getById(Tribunal.class, id);
 		t1.setAdresse(tribunal.getAdresse());
